@@ -1,12 +1,15 @@
+
 import Header from "./components/header";
 
 
 
-function App() {
+
+const App =()=> {
   
+ 
   return (
     <div className="App">
-        <Header/>
+        <Header />
     </div>
   );
   

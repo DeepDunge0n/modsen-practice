@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import  {Component} from 'react';
 import styles from './header.module.css'
 import request from 'superagent'
 
@@ -17,7 +17,7 @@ class Header extends Component{
             .get("https://www.googleapis.com/books/v1/volumes")
             .query({q: this.state.searchField})
             .then((data)=> {
-                console.log(data);
+                this.setState({books: [...data.body.items]})
             })
     }
 
@@ -35,7 +35,7 @@ class Header extends Component{
                     type='text' 
                     placeholder='react'>
                 </input>
-                <button type='submit'><i class='bx bx-search-alt-2'></i></button>
+                <button type='submit'><i className='bx bx-search-alt-2'></i></button>
             </form>
             <div className={styles.sorting}>
                 <div>Categories</div>
