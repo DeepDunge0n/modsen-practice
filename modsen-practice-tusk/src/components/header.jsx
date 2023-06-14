@@ -1,37 +1,17 @@
-import  {Component} from 'react';
+
 import styles from './header.module.css'
-import request from 'superagent'
 
-class Header extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            books: [],
-            seachField: ''
-        }
-    }
 
-    searchBook = (e) =>{
-        e.preventDefault();
-        request
-            .get("https://www.googleapis.com/books/v1/volumes")
-            .query({q: this.state.searchField})
-            .then((data)=> {
-                this.setState({books: [...data.body.items]})
-            })
-    }
-
-    handleSearch = (e) =>{
-        this.setState({searchField: e.target.value})
-    }
-    render(){
+const Header = (props)=>{
+    
+    
     return(
         <div className={styles.header}>
             <h1>Search for books</h1>
-            <form onSubmit={this.searchBook}
+            <form onSubmit={props.searchBook}
                 className={styles.search} action="">
                 <input
-                    onChange={this.handleSearch} 
+                    onChange={props.handleSearch} 
                     type='text' 
                     placeholder='react'>
                 </input>
@@ -45,7 +25,7 @@ class Header extends Component{
             </div>
         </div>
 
-    )}
+    )
 }
 
 export default Header;
