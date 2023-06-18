@@ -1,7 +1,9 @@
 import React from "react";
 import Header from "./components/header";
-import request from 'superagent'
+
 import BookList from "./components/BookList";
+import ErrorBoundary from "./components/ErrorBoundary";
+
 
 
 
@@ -10,29 +12,33 @@ class App extends React.Component{
     super(props);
     this.state = {
         books: [],
-        seachField: ''
+        searchField: '',
+        isLoaded: false,
     }
 }
-
-searchBook = (e) =>{
-    e.preventDefault();
-    request
-        .get("https://www.googleapis.com/books/v1/volumes")
-        .query({q: this.state.searchField})
-        .then((data)=> {
-            console.log(data);
-            this.setState({books: [...data.body.items]})
-        })
-}
-
 handleSearch = (e) =>{
-    this.setState({searchField: e.target.value})
+    this.setState({searchField: e.target.value}) 
 }
+searchBook=(e)=>{
+  e.preventDefault();
+  console.log(this.state.searchField);
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchField}&startIndex=0&maxResults=30`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      this.setState({isLoaded: true});
+      this.setState({books: [...data.items]});
+    })
+    
+}
+
  render(){
-  return (
+    return (
     <div className="App">
-        <Header searchBook = {this.searchBook} handleSearch={this.handleSearch}/>
+        <ErrorBoundary>
+        <Header searchBook = {this.searchBook} handleSearch={this.handleSearch} />
         <BookList books={this.state.books}/>
+        </ErrorBoundary>
     </div>
   );
  }

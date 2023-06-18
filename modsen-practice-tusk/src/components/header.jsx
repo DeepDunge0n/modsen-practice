@@ -2,9 +2,8 @@
 import styles from './header.module.css'
 
 
-const Header = (props)=>{
-    
-    
+const Header =(props)=>{
+
     return(
         <div className={styles.header}>
             <h1>Search for books</h1>
@@ -21,11 +20,16 @@ const Header = (props)=>{
                 <div>Categories</div>
                 <input placeholder='all'></input>
                 <div>Sorting by</div>
-                <input placeholder='relevance'></input>
+                <select defaultValue='Relevance'>
+                    
+                </select>
             </div>
         </div>
 
     )
+    
 }
+
+
 
 export default Header;
