@@ -3,7 +3,9 @@ import styles from "./BookList.module.css"
 
 const BookList = (props)=>{  
     return(
-        <div className={styles.list}>
+        <div >
+            <div className={styles.totalItems}>Total items: {props.totalItems}</div>
+            <div className={styles.list}>
             {
                 props.books.map((book, i)=>{
                     return <BookCard 
@@ -15,8 +17,10 @@ const BookList = (props)=>{
                                     author={book.volumeInfo.authors}
                                     categori={book.volumeInfo.categories}
                     />
+                    
                 })
-            }
+            }</div>
+            <button className={styles.totalItems} onClick={props.addMore}>Add more</button>
         </div>
     )
 }
