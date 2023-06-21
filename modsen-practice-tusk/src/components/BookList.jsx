@@ -1,7 +1,11 @@
 import BookCard from "./BookCard";
 import styles from "./BookList.module.css"
 
-const BookList = (props)=>{  
+const BookList = (props)=>{ 
+    let btn; 
+    props.totalItems!==0 ? btn = <button className={styles.totalItems} onClick={props.addMore}>Add more</button>:
+    btn = <div></div>
+
     return(
         <div >
             <div className={styles.totalItems}>Total items: {props.totalItems}</div>
@@ -16,11 +20,12 @@ const BookList = (props)=>{
                                     title={book.volumeInfo.title}
                                     author={book.volumeInfo.authors}
                                     categori={book.volumeInfo.categories}
+                                    id = {book.id}
                     />
                     
                 })
             }</div>
-            <button className={styles.totalItems} onClick={props.addMore}>Add more</button>
+             {btn}          
         </div>
     )
 }
