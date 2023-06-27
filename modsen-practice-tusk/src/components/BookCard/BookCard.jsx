@@ -10,7 +10,7 @@ const BookCard = (props)=>{
           
             <Link to={`/${props.id}`}>{props.title}</Link>
             
-                <h3>{props.categori}</h3>
+                <h3>{props.category}</h3>
                 <p>{props.author}</p>
            </div>
 

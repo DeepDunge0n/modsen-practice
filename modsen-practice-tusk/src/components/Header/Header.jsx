@@ -1,4 +1,3 @@
-
 import styles from './header.module.css'
 
 
@@ -17,7 +16,7 @@ const Header =(props)=>{
             </form>
             <div className={styles.sorting}>
                 <div>Categories</div>
-                <select defaultValue='All' onChange={props.handleCategori}>
+                <select defaultValue='All' onChange={props.handleCategory}>
                     {categories.map((item, key) => {return (<option key = {key} value = {item}>{item}</option>)})}
                 </select>
                 <div>Sorting by</div>

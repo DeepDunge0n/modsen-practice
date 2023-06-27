@@ -1,6 +1,6 @@
 
 .header{
-    background-image: url('./../../public/headerBooks.jpg');
+    background-image: url('./../../assets/headerBooks.jpg');
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,4 +11,11 @@
 .sorting{
     display: flex;
     flex-direction: row;
+}
+
+button{
+    cursor: pointer;
+}
+select{
+    cursor:pointer;
 }

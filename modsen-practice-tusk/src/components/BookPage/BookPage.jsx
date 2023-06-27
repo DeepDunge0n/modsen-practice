@@ -1,17 +1,8 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link} from "react-router-dom";
+import useRequestID from "../../hooks/useRequestID";
 
 const BookPage = ()=>{ 
-    const [post, setPost] = useState(null);
-    const {id} = useParams();
-    useEffect(() =>{
-        fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                setPost(data);
-            })
-    }, [id])
+    const post = useRequestID();
     return(
         <div>
             {post && (
@@ -25,6 +16,7 @@ const BookPage = ()=>{
                      post.volumeInfo.authors.map((item, key) => { return <p key = {key}>{item}</p>}) : 
                      <p>No authors for this book</p>}
                      <p>{post.volumeInfo.description}</p>
+                     <Link to='/'>Back</Link>
                 </>
             )}
         </div>
