@@ -1,11 +1,12 @@
 import { Link} from "react-router-dom";
 import useRequestID from "../../hooks/useRequestID";
 
+
 const BookPage = ()=>{ 
     const post = useRequestID();
     return(
         <div>
-            {post && (
+            {post && ( 
                 <>
                     <img src={post.volumeInfo.imageLinks.thumbnail} alt="no image"></img>
                     <h1>{post.volumeInfo.title}</h1>

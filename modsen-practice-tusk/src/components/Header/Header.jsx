@@ -1,30 +1,21 @@
+import Sort from '../Sort/Sort';
 import styles from './header.module.css'
 
 
-const Header =(props)=>{
-    const categories = ['All', 'Art', 'Biography', 'Computers', 'History', 'Medical', 'Poetry'];
+const Header =({handleIndex, handleSearch, handleCategory, handleSort})=>{
+    
     return(
         <div className={styles.header}>
             <h1>Search for books</h1>
-            <form onSubmit={props.searchBook}
+            <form onSubmit={handleIndex}
                 className={styles.search} action="">
                 <input
-                    onChange={props.handleSearch} 
+                    onChange={handleSearch} 
                     type='text' >
                 </input>
                 <button type='submit'><i className='bx bx-search-alt-2'></i></button>
             </form>
-            <div className={styles.sorting}>
-                <div>Categories</div>
-                <select defaultValue='All' onChange={props.handleCategory}>
-                    {categories.map((item, key) => {return (<option key = {key} value = {item}>{item}</option>)})}
-                </select>
-                <div>Sorting by</div>
-                <select defaultValue='Newest' onChange={props.handleSort} >
-                    <option value='Newest'>Relevance</option>
-                    <option value='Relevance'>Newest</option>   
-                </select>
-            </div>
+            <Sort handleCategory={handleCategory} handleSort = {handleSort}/>
         </div>
 
     )

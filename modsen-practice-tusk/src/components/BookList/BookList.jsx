@@ -1,7 +1,7 @@
 import BookCard from "../BookCard/BookCard";
 import styles from "./BookList.module.css"
 
-const BookList = ({ totalItems, books }, props)=>{ 
+const BookList = ({ totalItems, books , addMore})=>{ 
 
     const notFoundImage = './src/assets/no-image.jpg'
     return(
@@ -18,12 +18,11 @@ const BookList = ({ totalItems, books }, props)=>{
                                     author={authors}
                                     category={categories}
                                     id = {book.id}
-                    />
-                    
+                    />      
                 })
             }</div>
             {totalItems !== 0 && (
-            <button className={totalItems} onClick={props.addMore}>
+            <button className={totalItems} onClick={addMore}>
                 Add more
             </button>)}        
         </div>

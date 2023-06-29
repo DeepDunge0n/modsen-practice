@@ -17,9 +17,10 @@ const App =()=>{
 
 const handleSearch = (e) => {setSearchField(e.target.value)}
 const handleIndex = (e) =>{
+  searchBook(e);
+  navigate('/');
   setBooks([]);
   setIndex(0);
-  searchBook(e);
 }
 const handleCategory = (e) =>{
   setCategory(e.target.value);
@@ -29,7 +30,7 @@ const handleSort = (e) =>{
 }
 
 const searchBook = (e)=>{ 
-  e.preventDefault();
+  e.preventDefault(); 
   console.log(searchField);
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchField}+intitle:${searchField}+subject:${category}&startIndex=${index}&maxResults=30&orderBy=${sort}`)
     .then(response => response.json())
@@ -52,7 +53,7 @@ const searchBook = (e)=>{
     return (
     
     <div className="App">
-      <Header searchBook = {handleIndex}
+      <Header handleIndex = {handleIndex}
                 handleSearch={handleSearch}
                 handleSort = {handleSort}
                 handleCategory = {handleCategory} />
