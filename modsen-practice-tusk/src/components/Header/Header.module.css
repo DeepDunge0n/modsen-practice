@@ -12,3 +12,9 @@
 button{
     cursor: pointer;
 }
+
+
+.sorting{
+    display: flex;
+    flex-direction: row;
+}

@@ -12,3 +12,6 @@ body {
       monospace;
   }
   
+  select{
+    cursor:pointer;
+}
