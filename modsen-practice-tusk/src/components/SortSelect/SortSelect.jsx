@@ -1,4 +1,4 @@
-const Sort = ({ handleSort, categories, categoriesStr }) => {
+const SortSelect = ({ handleSort, categories, categoriesStr }) => {
   return (
     <>
       <div>{categoriesStr}</div>
@@ -15,4 +15,4 @@ const Sort = ({ handleSort, categories, categoriesStr }) => {
   );
 };
 
-export default Sort;
+export default SortSelect;

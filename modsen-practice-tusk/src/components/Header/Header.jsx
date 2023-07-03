@@ -1,4 +1,4 @@
-import Sort from 'components/Sort/Sort';
+import SortSelect from 'components/SortSelect/SortSelect';
 import styles from './header.module.css';
 import { categories, categoriesStr, sortingStr, sortingBy } from './config';
 
@@ -13,12 +13,12 @@ const Header = ({ handleIndex, handleSearch, handleCategory, handleSort }) => {
         </button>
       </form>
       <div className={styles.sorting}>
-        <Sort
+        <SortSelect
           handleSort={handleCategory}
           categories={categories}
           categoriesStr={categoriesStr}
         />
-        <Sort
+        <SortSelect
           handleSort={handleSort}
           categories={sortingBy}
           categoriesStr={sortingStr}
